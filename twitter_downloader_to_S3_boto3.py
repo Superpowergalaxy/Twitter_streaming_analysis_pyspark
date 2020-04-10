@@ -4,7 +4,7 @@
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
-from twitter_credentials1 import consumer_key, consumer_secret, access_token, access_token_secret
+from twitter_credentials1 import consumer_key, consumer_secret, access_token, access_token_secret,ACCESS_ID, ACCESS_KEY
 
 import csv
 import time
@@ -45,7 +45,10 @@ class StdOutListener(StreamListener):
             self.object_name = self.file_name
     
         # Upload the file
-        s3_client = boto3.client('s3')
+        s3_client = boto3.client('s3',
+            aws_access_key_id=ACCESS_ID,
+            aws_secret_access_key=ACCESS_KEY)
+
         try:
             response = s3_client.upload_file(self.file_name, self.bucket, self.object_name)
             print('upload_successful')
