@@ -6,7 +6,6 @@ from tweepy import OAuthHandler
 from tweepy import Stream
 from twitter_credentials1 import consumer_key, consumer_secret, access_token, access_token_secret
 
-import datetime
 import csv
 import time
 import datetime
