@@ -1,9 +1,10 @@
 # Takes tweets and a designated csv file and writes them to it and save it to S3
+# designed to run on EC2 instance
 # Import packages and config
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
-from twitter_credentials import consumer_key, consumer_secret, access_token, access_token_secret
+from twitter_credentials1 import consumer_key, consumer_secret, access_token, access_token_secret
 
 import datetime
 import csv
@@ -87,16 +88,6 @@ if __name__ == '__main__':
     l = StdOutListener()
     auth = OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
+    # pass in our own listerner 
     stream = Stream(auth, l)
-
-    # # Filter based on listed items
-    # csvw = csv.writer(open("stream_covid-19.csv", "a"))
-    # csvw.writerow(['twitter_id', 'name', 'created_at', 'followers_count','place', 'text'])
     stream.filter(track=['COVID19'])
-
-    # while True:
-    #     try:
-    #         stream.filter(track=['COVID19'])
-    #     except:
-    #         print('sleep')
-    #         time.sleep(60 * 10)
