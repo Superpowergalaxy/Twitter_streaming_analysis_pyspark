@@ -70,7 +70,8 @@ class StdOutListener(StreamListener):
                            status.user.followers_count,
                            status.place,
                            tweet_text])
-            if datetime.datetime.now().minute != self.current_date.minute:
+            # create a new file each day
+            if datetime.datetime.now().day != self.current_date.day:
                 # date have changed, uypload and restart now,
                 self.current_date = datetime.datetime.now()
                 self.upload_file()
