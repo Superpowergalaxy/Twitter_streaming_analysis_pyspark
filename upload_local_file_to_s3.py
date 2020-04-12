@@ -1,10 +1,10 @@
-from twitter_credentials import ACCESS_ID, ACCESS_ID
+from twitter_credentials import ACCESS_ID, ACCESS_KEY
 import boto3
 import logging
 from botocore.exceptions import ClientError
 
 
-def upload_file(ACCESS_ID,ACCESS_ID,file_name,object_name = None):
+def upload_file(ACCESS_ID,ACCESS_KEY,bucket,file_name,object_name = None):
     """Upload a file to an S3 bucket
 
     :param file_name: File to upload
@@ -32,4 +32,4 @@ def upload_file(ACCESS_ID,ACCESS_ID,file_name,object_name = None):
     return True
 
 object_name = input().strip() 
-upload_file(ACCESS_ID,ACCESS_ID,'stream_covid-19.csv',object_name)
+upload_file(ACCESS_ID,ACCESS_ID,'twitter-bucket-jingyusu','stream_covid-19.csv',object_name)
