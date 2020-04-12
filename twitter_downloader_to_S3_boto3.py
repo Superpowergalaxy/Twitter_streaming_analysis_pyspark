@@ -93,4 +93,8 @@ if __name__ == '__main__':
     auth.set_access_token(access_token, access_token_secret)
     # pass in our own listerner 
     stream = Stream(auth, l)
-    stream.filter(track=['COVID19'])
+    try:
+        stream.filter(track=['COVID19'])
+    except:
+        print('sleep for 10 min')
+        time.sleep(60*10)
