@@ -18,9 +18,8 @@ def upload_file(ACCESS_ID,ACCESS_KEY,bucket,file_name,object_name = None):
         object_name = file_name
 
     # Upload the file
-    s3_client = boto3.client('s3',
-        aws_access_key_id=ACCESS_ID,
-        aws_secret_access_key=ACCESS_KEY)
+    # remember to set the creditenals with 'aws configure' command 
+    s3_client = boto3.client('s3')
 
     try:
         response = s3_client.upload_file(file_name, bucket,object_name)
@@ -32,4 +31,4 @@ def upload_file(ACCESS_ID,ACCESS_KEY,bucket,file_name,object_name = None):
     return True
 
 object_name = input().strip() 
-upload_file(ACCESS_ID,ACCESS_ID,'twitter-bucket-jingyusu','stream_covid-19.csv',object_name)
+upload_file(ACCESS_ID,ACCESS_ID,'twitter-bucket-jingyusu''stream_covid-19.csv',object_name)

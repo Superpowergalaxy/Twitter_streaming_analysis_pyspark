@@ -45,9 +45,11 @@ class StdOutListener(StreamListener):
             self.object_name = self.file_name
     
         # Upload the file
-        s3_client = boto3.client('s3',
-            aws_access_key_id=ACCESS_ID,
-            aws_secret_access_key=ACCESS_KEY)
+        # remember to set the creditenals with 'aws configure' command 
+        s3_client = boto3.client('s3')
+        # s3_client = boto3.client('s3',
+        #     aws_access_key_id=ACCESS_ID,
+        #     aws_secret_access_key=ACCESS_KEY)
 
         try:
             response = s3_client.upload_file(self.file_name, self.bucket, self.object_name)
