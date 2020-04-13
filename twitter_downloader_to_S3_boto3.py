@@ -4,7 +4,7 @@
 from tweepy.streaming import StreamListener
 from tweepy import OAuthHandler
 from tweepy import Stream
-from twitter_credentials1 import consumer_key, consumer_secret, access_token, access_token_secret,ACCESS_ID, ACCESS_KEY
+from twitter_credentials1 import consumer_key, consumer_secret, access_token, access_token_secret
 
 import csv
 import time
@@ -95,8 +95,10 @@ if __name__ == '__main__':
     auth.set_access_token(access_token, access_token_secret)
     # pass in our own listerner 
     stream = Stream(auth, l)
-    try:
-        stream.filter(track=['COVID19'])
-    except:
-        print('sleep for 10 min')
-        time.sleep(60*10)
+    while True:
+            
+        try:
+            stream.filter(track=['COVID19'])
+        except:
+            print('sleep for 10 min')
+            time.sleep(60*10)
