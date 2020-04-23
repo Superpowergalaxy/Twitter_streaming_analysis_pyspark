@@ -7,8 +7,7 @@ On the spot instance:
 git clone this repository
 
 
-  make install
-
-  make run
+    make install
+    make run
 
 
