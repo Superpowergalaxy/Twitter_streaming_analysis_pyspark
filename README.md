@@ -6,6 +6,9 @@ On the spot instance:
 
 git clone this repository
 
+    git clone https://github.com/Superpowergalaxy/Twitter_streaming_analysis_pyspark
+
+Install necessary libraires
 
     make install
     make run
